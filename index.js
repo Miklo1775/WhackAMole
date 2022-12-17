@@ -5,15 +5,19 @@ const row = document.getElementsByTagName("row");
 const row1 = document.querySelector(".row1");
 const holes = document.querySelectorAll(".hole");
 const score = document.querySelector(".score");
-const hole = document.getElementById(
+const holeStart = document.getElementById(
   `hole-${Math.trunc(Math.random() * 9 + 1)}`
 );
 //SETTING STARTING POINT FOR THE MOLE
-hole.src = "./images/mole.png";
+holeStart.src = "./images/mole.png";
 //SETTING INITIAL VALUE
 score.innerHTML = 0;
-//SETTING EVENTLISTENER TO ALL THE IMGS
-
+function setHoles() {
+  for (let i of holes) {
+    i.src = "./images/hole.png";
+  }
+}
+// setHoles();
 function setMole() {
   for (const eachHole of holes) {
     let src2 = eachHole.getAttribute("src");
@@ -25,22 +29,21 @@ function setMole() {
     "./images/mole.png";
 }
 //SETTING AN INTERVAL FOR THE MOLE TO POP UP
-setInterval(setMole, 1000);
-// setInterval(setMole, 1000);
-function setHoleEvent(holes) {
+// setInterval(setMole, 800);
+
+function setClickEvent(holes) {
   for (const holio of holes) {
     holio.addEventListener("click", function () {
       let src1 = holio.getAttribute("src");
       if (src1 === "./images/mole.png") {
         score.innerHTML++;
-        //RETURNS IMG BACK TO REGULAR HOLE
-        holio.src = "./images/hole.png";
       }
     });
   }
 }
-
-setHoleEvent(holes);
+setHoles();
+setInterval(setMole, 1000);
+setClickEvent(holes);
 
 //CREATED A SMALL OBJECT TO STORE METHODS SO AS TO NOT
 //REPEAT LINES OF CODE
