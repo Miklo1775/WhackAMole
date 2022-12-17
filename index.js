@@ -9,7 +9,7 @@ const hole = document.getElementById(
   `hole-${Math.trunc(Math.random() * 9 + 1)}`
 );
 //SETTING STARTING POINT FOR THE MOLE
-hole.src = "/images/mole.png";
+hole.src = "./images/mole.png";
 //SETTING INITIAL VALUE
 score.innerHTML = 0;
 //SETTING EVENTLISTENER TO ALL THE IMGS
@@ -17,30 +17,30 @@ score.innerHTML = 0;
 function setMole() {
   for (const eachHole of holes) {
     let src2 = eachHole.getAttribute("src");
-    if (src2 === "/images/mole.png") {
-      eachHole.src = "/images/hole.png";
+    if (src2 === "./images/mole.png") {
+      eachHole.src = "./images/hole.png";
     }
   }
   document.getElementById(`hole-${Math.trunc(Math.random() * 9 + 1)}`).src =
-    "/images/mole.png";
+    "./images/mole.png";
 }
 //SETTING AN INTERVAL FOR THE MOLE TO POP UP
 setInterval(setMole, 1000);
 // setInterval(setMole, 1000);
-function cornHolio(holes) {
+function setHoleEvent(holes) {
   for (const holio of holes) {
     holio.addEventListener("click", function () {
       let src1 = holio.getAttribute("src");
-      if (src1 === "/images/mole.png") {
+      if (src1 === "./images/mole.png") {
         score.innerHTML++;
         //RETURNS IMG BACK TO REGULAR HOLE
-        holio.src = "/images/hole.png";
+        holio.src = "./images/hole.png";
       }
     });
   }
 }
 
-cornHolio(holes);
+setHoleEvent(holes);
 
 //CREATED A SMALL OBJECT TO STORE METHODS SO AS TO NOT
 //REPEAT LINES OF CODE
@@ -70,10 +70,10 @@ const stylio = {
 /*******************BODY********************/
 stylio.setHeight(body, "96%");
 stylio.setWidth(body, "100%");
-stylio.changeBackground(body, "'/images/grass.jpeg'");
+stylio.changeBackground(body, "'./images/grass.jpeg'");
 
 /*******************NAV********************/
-stylio.changeBackground(nav, "'/images/dirt.jpg'");
+stylio.changeBackground(nav, "'./images/dirt.jpg'");
 nav.style.position = "fixed";
 stylio.setWidth(nav, "100%");
 stylio.setHeight(nav, "50px");
@@ -84,7 +84,7 @@ nav.style.justifyContent = "center";
 nav.style.alignItems = "center";
 
 /*******************ROW********************/
-console.log(stylio.flexEven(row));
+stylio.flexEven(row);
 
 /***************MOLE-CONTAINER**************/
 moleContainer.style.marginTop = "50px";
